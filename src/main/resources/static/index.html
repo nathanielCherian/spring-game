@@ -3,10 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 </head>
 <body>
 
     <h1>Hello there</h1>
 
+    <div class="ip-input-group">
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <input type="text" value="localhost:8888" id="ws-ip">
+            </div>
+        </div>
+    
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <button id="connect-btn" class="btn">Connect!</button>
+            </div>
+        </div>
+    </div>
+
+    <button id="foo-btn" class="btn">test!</button>
+
+
+
 </body>
+
+<script type="module">
+
+    // https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API/Writing_a_WebSocket_server_in_Java
+
+    var socket = null;
+
+    $("#connect-btn").click((event)=>{
+        $(".ip-input-group").fadeOut(500);
+        setSocket()
+    });
+
+    $("#foo-btn").click((event)=>{
+        console.log(socket);
+    });
+
+
+    const setSocket = () => {
+        socket = new WebSocket("ws://" + $("#ws-ip").val());
+        //socket = new WebSocket("ws://echo.websocket.org");
+
+        setTimeout(bindEvents, 1000);
+
+
+    }
+
+
+    function bindEvents(){
+
+        console.log(socket);
+        socket.onopen = function (event){
+            socket.send("hello there");
+            console.log("foooo")
+        }
+
+    }
+    
+
+
+
+
+</script>
+
+
+
 </html>
