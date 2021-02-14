@@ -1,0 +1,24 @@
+h1{
+
+    color:black;
+    font-family: "Times New Roman", bold, monospace;
+    font-size: 60px;
+}
+body{
+    background-color: whitesmoke;
+    font:normal 16px Arial, SansSerif;
+    margin: 0;
+    line-height: 1.6em;
+}
+.container1{
+    width: 60%;
+    margin: auto;
+}
+
+.box-1{
+    background-color:#DAD8D8;
+    color:black;
+    font-family: "Times New Roman",serif;
+    font-size: 18px;
+    white-space: pre-line;
+}

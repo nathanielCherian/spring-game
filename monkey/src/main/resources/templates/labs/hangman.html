@@ -1,0 +1,108 @@
+<!--<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/headfile.html :: header">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div th:replace="fragments/header :: header"></div>
+    <div>
+        <form action="/labs/hangman" method="GET" id="alphaForm">
+            <button name="alphaSelection" type="submit" value="A">A</button>
+            <button name="alphaSelection" type="submit" value="B">B</button>
+            <button name="alphaSelection" type="submit" value="C">C</button>
+            <button name="alphaSelection" type="submit" value="D">D</button>
+            <button name=alphaSelection" type="submit" value="E">E</button>
+            <button name="alphaSelection" type="submit" value="F">F</button>
+            <button name="alphaSelection" type="submit" value="G">G</button>
+            <button name="alphaSelection" type="submit" value="H">H</button>
+            <button name="alphaSelection" type="submit" value="I">I</button>
+            <button name=alphaSelection" type="submit" value="J">J</button>
+            <button name="alphaSelection" type="submit" value="K">K</button>
+            <button name="alphaSelection" type="submit" value="L">L</button>
+            <button name="alphaSelection" type="submit" value="M">M</button>
+            <button name="alphaSelection" type="submit" value="N">N</button>
+            <button name="alphaSelection" type="submit" value="O">O</button>
+            <button name="alphaSelection" type="submit" value="P">P</button>
+            <button name="alphaSelection" type="submit" value="Q">Q</button>
+            <button name="alphaSelection" type="submit" value="R">R</button>
+            <button name="alphaSelection" type="submit" value="S">S</button>
+            <button name="alphaSelection" type="submit" value="T">T</button>
+            <button name="alphaSelection" type="submit" value="U">U</button>
+            <button name="alphaSelection" type="submit" value="V">V</button>
+            <button name="alphaSelection" type="submit" value="W">W</button>
+            <button name="alphaSelection" type="submit" value="X">X</button>
+            <button name="alphaSelection" type="submit" value="Y">Y</button>
+            <button name="alphaSelection" type="submit" value="Z">Z</button>
+        </form>
+    </div> -->
+    <!-- <div class="phrase">
+        <p name="displayPhrase" th:text="${displayPhrase}"></p>
+    </div>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/headfile.html :: head">
+    <meta charset="UTF-8">
+    <title>Michael</title>
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+<h1><strong>Michael</strong></h1>
+
+<div>
+    <form action="/labs/hangman" method="GET" id="alphaForm">
+        <button name="alphaSelection" value="A" onclick="disable()">A</button>
+        <button name="alphaSelection" type="submit" value="B" onclick="disable()">B</button>
+        <button name="alphaSelection" value="C" onclick="disable()">C</button>
+        <button name="alphaSelection" type="submit" value="D" onclick="disable()">D</button>
+        <button name="alphaSelection" value="E" onclick="disable()">E</button>
+        <button name="alphaSelection" type="submit" value="F" onclick="disable()">F</button>
+        <button name="alphaSelection" type="submit" value="G" onclick="disable()">G</button>
+        <button name="alphaSelection" type="submit" value="H" onclick="disable()">H</button>
+        <button name="alphaSelection" type="submit" value="I" onclick="disable()">I</button>
+        <button name="alphaSelection" type="submit" value="J" onclick="disable()">J</button>
+        <button name="alphaSelection" type="submit" value="K" onclick="disable()">K</button>
+        <button name="alphaSelection" type="submit" value="L" onclick="disable()">L</button>
+        <button name="alphaSelection" type="submit" value="M" onclick="disable()">M</button>
+        <button name="alphaSelection" type="submit" value="N" onclick="disable()">N</button>
+        <button name="alphaSelection" type="submit" value="O" onclick="disable()">O</button>
+        <button name="alphaSelection" type="submit" value="P" onclick="disable()">P</button>
+        <button name="alphaSelection" type="submit" value="Q" onclick="disable()">Q</button>
+        <button name="alphaSelection" type="submit" value="R" onclick="disable()">R</button>
+        <button name="alphaSelection" type="submit" value="S" onclick="disable()">S</button>
+        <button name="alphaSelection" type="submit" value="T" onclick="disable()">T</button>
+        <button name="alphaSelection" type="submit" value="U" onclick="disable()">U</button>
+        <button name="alphaSelection" type="submit" value="V" onclick="disable()">V</button>
+        <button name="alphaSelection" type="submit" value="W" onclick="disable()">W</button>
+        <button name="alphaSelection" type="submit" value="X" onclick="disable()">X</button>
+        <button name="alphaSelection" type="submit" value="Y" onclick="disable()">Y</button>
+        <button name="alphaSelection" value="Z" onclick="disable()">Z</button>
+
+        </form>
+</div>
+<div class="phrase">
+    <p name="displayPhrase" th:text="${displayPhrase}"></p> <!-- displayed phrase -->
+    <p name="remainingGuesses" th:text="${guessesRemaining}"></p> <!-- guesses remaining -->
+</div>
+<script>
+    /*function disable() {
+
+        var valueOfButton;
+        let button;
+
+        button = document.querySelector("alphaSelection");
+        $("button").click(function() { // gets current
+            var fired_button = $(this).val();
+
+            valueOfButton = button.val();
+
+            fired_button.disabled = true;
+
+            return fired_button;
+        });
+    } */
+</script>
+</body>
+</html>

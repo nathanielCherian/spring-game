@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+    <h1>Hello there</h1>
+
+    <div class="ip-input-group">
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <input type="text" value="localhost:8888" id="ws-ip">
+            </div>
+        </div>
+    
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <button id="connect-btn" class="btn">Connect!</button>
+            </div>
+        </div>
+    </div>
+
+    <button id="foo-btn" class="btn">test!</button>
+
+    <canvas id="c"></canvas>
+
+
+</body>
+
+<script type="module">
+
+    // https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API/Writing_a_WebSocket_server_in_Java
+
+    var socket = null;
+
+    $("#connect-btn").click((event)=>{
+        $(".ip-input-group").fadeOut(500);
+        setSocket()
+    });
+
+    $("#foo-btn").click((event)=>{
+        //console.log(socket);
+        socket.send("hello");
+    });
+
+
+    const setSocket = () => {
+        socket = new WebSocket("ws://" + $("#ws-ip").val());
+        //socket = new WebSocket("ws://echo.websocket.org");
+
+        socket.onopen = function (event){
+            console.log("foooo");
+            socket.send("hello there");
+        }
+
+        socket.onmessage = function (event) {
+          console.log(event.data);
+        }
+
+        //setTimeout(bindEvents, 1000);
+
+
+    }
+
+
+    function bindEvents(){
+
+        console.log(socket);
+        socket.onopen = function (event){
+            socket.send("hello there");
+            console.log("foooo")
+        }
+
+    }
+
+</script>
+
+<script src="http://spite.github.io/THREE.MeshLine/demo/js/three.min.js"></script>
+<script src="http://spite.github.io/THREE.MeshLine/demo/js/OrbitControls.js"></script>
+<script src="http://spite.github.io/THREE.MeshLine/src/THREE.MeshLine.js"></script>
+
+<script type="module">
+            function main() {
+            const canvas = document.querySelector('#c');
+            const renderer = new THREE.WebGLRenderer({canvas});
+
+            const scene = new THREE.Scene();
+            scene.background = new THREE.Color(0xAAAAAA)
+
+
+
+            const fov = 45;
+            const aspect = 2;  // the canvas default
+            const near = 0.1;
+            const far = 400;
+            const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+            camera.position.set(0, 20, 20);
+
+
+
+            const color = 0xFFFFFF;
+            const intensity = 1;
+            const light = new THREE.PointLight(color, intensity);
+            light.position.set(0, 100, 0);
+            scene.add(light);
+
+
+            const controls = new THREE.OrbitControls(camera, canvas);
+            controls.target.set(0,5,0);
+            //controls.enableDamping = true;
+            controls.update()
+
+
+            const board = new THREE.Object3D();
+            scene.add(board);
+            board.scale.set(1,1,1)
+
+            const ROH = 28
+            const SIGMA = 10
+            const BETA = 8/3
+
+
+
+
+
+
+
+            const runners = [
+                {
+                    x:.1,
+                    y:1,
+                    z:1,
+                    color:0xeb3455
+                },
+
+
+
+                {
+                    x:.11,
+                    y:1,
+                    z:1,
+                    color:0x349feb
+                },
+
+
+
+                {
+                    x:.1,
+                    y:.99,
+                    z:1,
+                    color:0x34eb43
+                },
+
+                /*
+                {
+                    x:.1,
+                    y:1,
+                    z:1.01,
+                    color:0xdede16
+                }, */
+
+            ]
+
+
+            //var x = .1;
+            //var y = 1;
+            //var z = 1;
+
+            const t = 0.01
+
+
+
+
+            /*
+            for(var i=0;i<1000;i++){
+
+                console.log(x,y,z);
+                addPoint(x,y,z);
+
+                const dx = SIGMA*(y-x);
+                const dy = (x * (ROH - z)) - y;
+                const dz = (x*y) - (BETA*z)
+
+                x += dx*t;
+                y += dy*t;
+                z += dz*t;
+
+
+            }
+            */
+
+
+
+
+
+
+
+
+
+
+            function addPoint(x,y,z, color){
+                const geo = new THREE.BoxGeometry(.5,.5,.5);
+                const mat = new THREE.MeshBasicMaterial({color:color});
+                const mesh = new THREE.Mesh(geo, mat);
+                mesh.position.set(x,y,z);
+                board.add(mesh);
+            }
+
+
+
+
+            function render(time){
+                time *= 0.001;
+
+                if(resizeRendererToDisplaYSize(renderer)){
+                    const canvas = renderer.domElement;
+                    camera.aspect = canvas.clientWidth / canvas.clientHeight;
+                    camera.updateProjectionMatrix();
+                }
+
+
+
+
+
+                    runners.forEach((runner) => {
+
+                        const x = runner.x;
+                        const y = runner.y;
+                        const z = runner.z;
+
+                        addPoint(x,y,z, runner.color);
+
+                        const dx = SIGMA*(y-x);
+                        const dy = (x * (ROH - z)) - y;
+                        const dz = (x*y) - (BETA*z)
+
+                        runner.x += dx*t;
+                        runner.y += dy*t;
+                        runner.z += dz*t;
+
+                    });
+
+
+
+
+
+
+                renderer.render(scene, camera);
+                requestAnimationFrame(render);
+            }
+
+
+
+
+
+            function resizeRendererToDisplaYSize(renderer) {
+                const canvas = renderer.domElement;
+                const pixelRatio = window.devicePixelRatio;
+                const width = canvas.clientWidth * pixelRatio | 0;
+                const height = canvas.clientHeight * pixelRatio | 0;
+                const needResize = canvas.width !== width || canvas.height !== height;
+                if (needResize){
+                    renderer.setSize(width, height, false);
+                }
+                return needResize;
+            }
+
+            requestAnimationFrame(render);
+
+            }
+
+
+
+            main();
+
+        </script>
+
+
+        <style>
+            #c{
+                width:50%;
+
+            }
+        </style>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/headfile.html :: head">
+    <meta charset="UTF-8">
+    <title>Michael</title>
+</head>
+<body>
+    <div th:replace="fragments/header :: header"></div>
+    <h1><strong>Michael</strong></h1>
+    <div>
+        <form action="/ap-practice/michael" method="GET" id="passwordForm">
+            <label for="passwordForm">Type a prefix to generate a password</label> <!-- for="passwordFor" might be the only necessary identifier Explanation of for in the label tag: https://www.w3schools.com/tags/tag_label.asp -->
+            <input name="prefix" id="passwordPrefixField" type="text"> <!-- Not sure how id="" is used -->
+            <label for="passwordForm">Select a length for a random set of numbers</label>
+            <input name="length" id="passwordNumField" type="num" min="1"> <!-- successfully rejects any string value and uses default length of 4 -->
+            <button>Generate</button>
+        </form>
+    </div>
+    <div class="passwords">
+        <table style="margin: 5%"> <!-- Table, not sure how to style borders -->
+            <tr> <!-- Column titles -->
+                <th>Password Number</th>
+                <th>Password</th>
+            </tr>
+            <tr th:each="password : ${passwords}"> <!-- For-Each Loop in HTML!(?) -->
+                <td th:text="${passwords.indexOf(password)}"></td> <!-- Access directly to the ArrayList -->
+                <td th:text="${password}"></td> <!-- Value of iterated ArrayList object via normal for each (stored in HTML object?) -->
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

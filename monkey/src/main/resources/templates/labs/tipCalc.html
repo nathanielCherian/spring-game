@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>TipCalculator</title>
+<style>
+.rectangle{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    height: 75%;
+    width: 35%;
+    background-color: #444444;
+}
+.text{
+    color: whitesmoke;
+    position: relative;
+    left: 25%;
+    white-space: pre-line;
+}
+.buttons{
+    position: relative;
+    top: 25%;
+    left: 25%;
+    color: white;
+}
+.Returns{
+    position: relative;
+    top: 50%;
+    left: 32%
+}
+</style>
+</head>
+<body>
+
+<div class="rectangle">
+    <div class="text">
+        Please enter the values given
+        Please give your waiter a nice tip :)
+    </div>
+    <div class="buttons">
+
+        <form id="form1">
+            Enter percent for tip<label>
+            <input type="number" name="percent" id="percent">
+        </label><br>
+            <label for="service">Choose level of service</label>
+            <select name="service" id="service">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select><br>
+            <label for="Total">Total</label>
+            <input type="number" name="Total" id="Total">
+        </form>
+        <br>
+
+        <button onclick="Tip(document.getElementById('percent').valueOf(),document.getElementById('service').valueOf(),document.getElementById('Total').valueOf())">calculate tip</button><br>
+
+    </div>
+    <div class="Returns">
+      Tip: <input type="text" id="Tip" name="Tip" value="0.00" readonly>
+    </div>
+    <script>
+        function Tip(percent,service,total) {
+                //1 service .5%
+                //2 service 1%
+                //3 service 2%
+                //4 service 4%
+                //5 service 5%
+            let localper = percent.value/100.0;
+            let localser = service.value;
+            let localtotal = total.value;
+            let Tipfinal;
+            switch (localser) {
+                case "1":
+                    Tipfinal = (.005+localper)*localtotal; break;
+                case "2":
+                    Tipfinal = (.01+localper)*localtotal; break;
+                case "3":
+                    Tipfinal = (.02+localper)*localtotal; break;
+                case "4":
+                    Tipfinal = (.04+localper)*localtotal; break;
+                case "5":
+                    Tipfinal = (.05+localper)*localtotal; break;
+            }
+            document.getElementById("Tip").value= Tipfinal;
+        }
+    </script>
+</div>
+</body>
+</html>
