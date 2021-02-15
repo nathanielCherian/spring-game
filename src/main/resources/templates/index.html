@@ -1,10 +1,59 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>You first Spring application</title>
+    <title>Home | SpeedySalamanders </title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
 </head>
 <body>
-    <h1>Hello there</h1>
+
+    <div th:replace="fragments/header.html"></div>
+
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container animate__animated animate__backInLeft jumbotron-c">
+            <h1 class="display-2 jumbotron-title">Speedy Salamanders</h1>
+            <p class="lead jumbotron-d">Del Norte High School CSA 2020-2021</p>
+        </div>
+
+    </div>
+
+
 </body>
+
+<style>
+
+
+    .jumbotron{
+        height: 100%;
+        width: 100%;
+        margin-bottom: 0;
+    }
+
+    .jumbotron-c{
+        padding: 5%;
+    }
+
+
+
+</style>
+
+<script>
+    $('#theme-checkbox').change(function(){
+        console.log("changed", this.checked);
+        if(this.checked){
+            $("body").css("mix-blend-mode", "normal");
+            $(".theme-excempt").css("mix-blend-mode", "normal");
+        }else{
+            $("body").css("mix-blend-mode", "difference");
+            $(".theme-excempt").css("mix-blend-mode", "difference");
+        }
+    });
+
+</script>
+
+
 </html>
