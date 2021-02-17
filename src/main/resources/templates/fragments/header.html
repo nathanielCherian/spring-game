@@ -9,6 +9,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="/ap-frqs">AP Resources</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/pair-share">Pair Share</a>
+            </li>
         </ul>
 
     </div>
@@ -20,3 +23,58 @@
   .toggle.ios, .toggle-on.ios, .toggle-off.ios { border-radius: 20rem; }
   .toggle.ios .toggle-handle { border-radius: 20rem; }
 </style>
+
+<script>
+
+    $(document).ready((event)=>{
+        if(!getCookie("theme")) setCookie("theme", "light");
+        const theme = getCookie("theme");
+
+        console.log(theme);
+        if(theme == "light"){
+            $('#theme-checkbox').prop('checked', true);
+            $("body").css("mix-blend-mode", "normal");
+            $(".theme-excempt").css("mix-blend-mode", "normal");
+        }else{
+            $('#theme-checkbox').prop('checked', false);
+            $("body").css("mix-blend-mode", "difference");
+            $(".theme-excempt").css("mix-blend-mode", "difference");
+        }
+
+        console.log(document.cookie);
+    });
+
+    $('#theme-checkbox').change(function(){
+        console.log("changed", this.checked);
+        if(this.checked){
+            setCookie("theme", "light")
+            $("body").css("mix-blend-mode", "normal");
+            $(".theme-excempt").css("mix-blend-mode", "normal");
+        }else{
+            setCookie("theme", "dark")
+            $("body").css("mix-blend-mode", "difference");
+            $(".theme-excempt").css("mix-blend-mode", "difference");
+        }
+    });
+
+    const setCookie = (key, value) => {
+        document.cookie = `${key}=${value};`;
+    }
+
+    const getCookie = (key) => {
+      var name = key + "=";
+      var decodedCookie = decodeURIComponent(document.cookie);
+      var ca = decodedCookie.split(';');
+      for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return null;
+    }
+
+</script>
