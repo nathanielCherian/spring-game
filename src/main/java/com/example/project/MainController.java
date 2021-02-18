@@ -24,7 +24,10 @@ public class MainController {
         return "bitcoin.html";
     }
 
-
+    @GetMapping("/readme")
+    public String readme(){
+        return "readme.html";
+    }
 
 
 }
