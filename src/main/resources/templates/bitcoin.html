@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -26,10 +27,36 @@
         </div>
 
         <div class="row justify-content-center" id="transaction-box">
+
+            <div class="col-1">
+                <div id="segment-tree"></div>
+            </div>
+
             <div class="col-10">
                 <h5 id="transaction-hex"></h5>
             </div>
+
+            <div class="col-1"></div>
+
         </div>
+
+        <div class="row justify-content-center">
+            <div class="col-6">
+                <div class="container" id="display-box">
+                    <div class="row justify-content-center">
+                        <h3 id="segment-name"></h3>
+                    </div>
+
+                    <div class="row justify-content-center">
+                        <div class="col-12">
+                            <div id="clicked-hex"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
 
     </div>
 
@@ -39,22 +66,30 @@
         .main-content{
             width: 100%;
             height: 100%;
-            padding: 3%;
+            padding: 1%;
+            padding-top: 3%;
+            word-wrap: break-word;
+        }
+
+        #clicked-hex{
             word-wrap: break-word;
         }
 
         #transaction-box{
             padding: 2%;
+            container: body;
         }
 
 
         #transaction-box span:hover{
             font-weight: bold;
             background-color: #A09C9C;
+            cursor: pointer;
         }
 
         #transaction-box span{
             font-size: 1.2em;
+            container: body;
         }
 
     </style>
@@ -82,39 +117,52 @@
 
             var cc = 0;
 
-            const version = hex.substring(cc, cc+VERSION*2); cc += VERSION*2; addToBox(version);
-            const inputCount = hex.substring(cc, cc+INPUT_COUNT*2); cc += INPUT_COUNT*2;addToBox(inputCount);
+            const version = hex.substring(cc, cc+VERSION*2); cc += VERSION*2; addToBox(version, "version");
+            const inputCount = hex.substring(cc, cc+INPUT_COUNT*2); cc += INPUT_COUNT*2;addToBox(inputCount, "inputCount");
 
             const inputs = []
             for(var i=0;i<parseInt(inputCount, 16);i++){
-                const txid = hex.substring(cc, cc+INPUT.TXID*2); cc += INPUT.TXID*2;addToBox(txid);
-                const vout = hex.substring(cc, cc+INPUT.VOUT*2); cc += INPUT.VOUT*2;addToBox(vout);
-                const scriptSigSize = hex.substring(cc, cc+INPUT.SCRIPT_SIG_SIZE*2); cc += INPUT.SCRIPT_SIG_SIZE*2;addToBox(scriptSigSize);
+                const txid = hex.substring(cc, cc+INPUT.TXID*2); cc += INPUT.TXID*2;addToBox(txid, "txid");
+                const vout = hex.substring(cc, cc+INPUT.VOUT*2); cc += INPUT.VOUT*2;addToBox(vout, "vout");
+                const scriptSigSize = hex.substring(cc, cc+INPUT.SCRIPT_SIG_SIZE*2); cc += INPUT.SCRIPT_SIG_SIZE*2;addToBox(scriptSigSize, "scriptSigSize");
                 const size = parseInt(scriptSigSize, 16);
-                const scriptSig = hex.substring(cc, cc+size*2); cc += size*2;addToBox(scriptSig);
-                const sequence = hex.substring(cc, cc+INPUT.SEQUENCE*2); cc += INPUT.SEQUENCE*2;addToBox(sequence);
+                const scriptSig = hex.substring(cc, cc+size*2); cc += size*2;addToBox(scriptSig, "scriptSig");
+                const sequence = hex.substring(cc, cc+INPUT.SEQUENCE*2); cc += INPUT.SEQUENCE*2;addToBox(sequence, "sequence");
 
                 inputs.push({i:{txid, vout, scriptSigSize, scriptSig, sequence}});
             }
 
-            const outputCount = hex.substring(cc, cc+OUTPUT_COUNT*2); cc += OUTPUT_COUNT*2;addToBox(outputCount);
+            const outputCount = hex.substring(cc, cc+OUTPUT_COUNT*2); cc += OUTPUT_COUNT*2;addToBox(outputCount, "outputCount");
             const outputs = [];
             for(var i=0;i<parseInt(outputCount, 16);i++){
-                const value = hex.substring(cc, cc+OUTPUT.VALUE*2); cc += OUTPUT.VALUE*2;addToBox(value);
-                const scriptPubKeySize = hex.substring(cc, cc+OUTPUT.SCRIPT_PUBKEY_SIZE*2); cc += OUTPUT.SCRIPT_PUBKEY_SIZE*2;addToBox(scriptPubKeySize);
+                const value = hex.substring(cc, cc+OUTPUT.VALUE*2); cc += OUTPUT.VALUE*2;addToBox(value, "value");
+                const scriptPubKeySize = hex.substring(cc, cc+OUTPUT.SCRIPT_PUBKEY_SIZE*2); cc += OUTPUT.SCRIPT_PUBKEY_SIZE*2;addToBox(scriptPubKeySize, "scriptPubKeySize");
                 const size = parseInt(scriptPubKeySize, 16);
-                const scriptPubKey = hex.substring(cc, cc+size*2); cc += size*2;addToBox(scriptPubKey);
+                const scriptPubKey = hex.substring(cc, cc+size*2); cc += size*2;addToBox(scriptPubKey, "scriptPubKey");
 
                 outputs.push({i:{value, scriptPubKeySize, scriptPubKey}});
             }
 
-            const locktime = hex.substring(cc, cc+LOCKTIME*2); cc += LOCKTIME*2;addToBox(locktime);
+            const locktime = hex.substring(cc, cc+LOCKTIME*2); cc += LOCKTIME*2;addToBox(locktime, "locktime");
 
             console.log({version, inputCount, inputs, outputCount, outputs, locktime});
         }
 
-        const addToBox = (cutHex) => {
-            $("#transaction-hex").append(`<span data-toggle="tooltip" data-placement="top" title="Tooltip on top"><code>${cutHex}</code></span>`);
+        const addToBox = (cutHex, identifier) => {
+            $("#transaction-hex").append(`<span name="${identifier}" class="hex-data"><code>${cutHex}</code></span>`);
+            addToSegmentTree(identifier);
+        }
+
+        const addToSegmentTree = (identifier) => {
+            //$("#segment-tree").append(`<h1>${identifier}</h1>`);
+        }
+
+        const selectHex = (element) => {
+            console.log(element);
+            const name = $(element).attr("name");
+            const value = $($(element).children("code")[0]).text();
+            $("#segment-name").text(name);
+            $("#clicked-hex").html(`<code>${value}</code>`);
         }
 
         const main = async() => {
@@ -123,16 +171,20 @@
             console.log(hex);
 
             processTxHex(hex);
+
+
+             $("#transaction-hex").on('click', 'span', function() {
+                selectHex(this);
+             });
+
         }
 
         main();
 
 
 
-        //For tooltips
-        $(function () {
-          $('[data-toggle="tooltip"]').tooltip()
-        })
+
+
     </script>
 
 </html>

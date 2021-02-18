@@ -2,6 +2,7 @@ package com.example.project;
 
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 public class MainController {
 
     @GetMapping("/ap-frqs")
-    public String apfrqs(){
+    public String apfrqs(Model model){
         return "apfrqs.html";
     }
 
@@ -22,6 +23,8 @@ public class MainController {
     public String bitcoin(){
         return "bitcoin.html";
     }
+
+
 
 
 }
