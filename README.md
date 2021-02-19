@@ -16,3 +16,6 @@ Live [here](http://spring.sylicia.com/)!
 ## TODO
 - Easter Eggs (AP FRQ)
 - Port game to javascript canvas 
+
+##Tickets
+- Kanban board link
