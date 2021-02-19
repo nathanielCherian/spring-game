@@ -17,5 +17,5 @@ Live [here](http://spring.sylicia.com/)!
 - Easter Eggs (AP FRQ)
 - Port game to javascript canvas 
 
-##Tickets
-- Kanban board link
+## Tickets
+- [Kanban Board](https://github.com/nathanielCherian/SpeedySalamanders/projects/1)
