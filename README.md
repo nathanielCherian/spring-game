@@ -18,6 +18,20 @@ to update the content on the website.
 blockchain. On top of this we created a front-end client-side application in javascript that allows you to explore the segment details
 of a bitcoin transaction.
 
+## Contributors
+| Contributor | GitHub Link |
+| ----------- | ----------- | 
+| Nathaniel Cherian | [@nathanielCherian](https://github.com/nathanielCherian) 
+
+## Runtime Instructions
+Requirements:
+- JDK 15
+- Maven Installer
+Steps:
+1. Clone project `https://github.com/nathanielCherian/spring-game`
+2. Run `src/main/java/com.example.project/Main.java`
+3. Navigate to [localhost:8080](http://localhost:8080/)
+
 ## Technologies Used:
 - Websocket Protocol
 - ThreeJS
@@ -25,11 +39,11 @@ of a bitcoin transaction.
 - Nginx
 - AWS EC2
 
-#### Planned
+## Planned
 - ReactJS
 - MongoDB
-
-## TODO
 - Finish Easter Eggs (AP FRQ)
 - Add more functionality to frontend code
-- Expirement with static react.js binaries
+- Expirement with static reactjs binaries
+- Extend the functionalities of our API's and ones that we are using
+
