@@ -1,6 +1,7 @@
-# spring-game
+## Quick Links
 
-Live [here](http://spring.sylicia.com/)!
+Live Deployed Website[here](http://spring.sylicia.com/)!
+- [Kanban Board](https://github.com/nathanielCherian/SpeedySalamanders/projects/1) includes tickets
 
 ## Technologies Used:
 - Websocket Protocol
@@ -16,6 +17,4 @@ Live [here](http://spring.sylicia.com/)!
 ## TODO
 - Easter Eggs (AP FRQ)
 - Port game to javascript canvas 
-
-## Tickets
-- [Kanban Board](https://github.com/nathanielCherian/SpeedySalamanders/projects/1)
+- 
