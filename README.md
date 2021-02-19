@@ -19,9 +19,7 @@ blockchain. On top of this we created a front-end client-side application in jav
 of a bitcoin transaction.
 
 ## Contributors
-| Contributor | GitHub Link |
-| ----------- | ----------- | 
-| Nathaniel Cherian | [@nathanielCherian](https://github.com/nathanielCherian) 
+ - Nathaniel Cherian [@nathanielCherian](https://github.com/nathanielCherian) 
 
 ## Runtime Instructions
 Requirements:
