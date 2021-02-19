@@ -1,7 +1,7 @@
 ## Quick Links
 
-Live Deployed Website[here](http://spring.sylicia.com/)!
-- [Kanban Board](https://github.com/nathanielCherian/SpeedySalamanders/projects/1) includes tickets
+Live Deployed Website [here](http://spring.sylicia.com/)!
+[Kanban Board](https://github.com/nathanielCherian/SpeedySalamanders/projects/1) includes tickets
 
 ## Technologies Used:
 - Websocket Protocol
