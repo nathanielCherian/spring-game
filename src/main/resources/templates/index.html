@@ -11,24 +11,68 @@
 </head>
 <body>
 
-    <div th:replace="fragments/header.html"></div>
+    <div class="main">
+        <div th:replace="fragments/header.html"></div>
 
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container animate__animated animate__backInLeft jumbotron-c">
-            <h1 class="display-2 jumbotron-title">Speedy Salamanders</h1>
-            <p class="lead jumbotron-d">Del Norte High School CSA 2020-2021</p>
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container animate__animated animate__backInLeft jumbotron-c">
+                <h1 class="display-2 jumbotron-title">Speedy Salamanders</h1>
+                <p class="lead jumbotron-d">Del Norte High School CSA 2020-2021</p>
+            </div>
+
         </div>
 
+        <div class="fluid-container display-container">
+            <div class="row gx-10 justify-content-center h-100 d-container">
+
+                <div class="col-3">
+                    <div class="card p-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Docs</h5>
+                            <p class="card-text">Learn more about the SpeedySalamander Project.</p>
+                            <button class="btn btn-light"><a href="/readme" class="standard-link">Explore</a></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-3">
+                    <div class="card p-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Bitcoin</h5>
+                            <p class="card-text">Try out our various bitcoin toolkits.</p>
+                            <button class="btn btn-light standard-link"><a href="/bitcoin" class="standard-link">Explore</a></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-3">
+                    <div class="card p-3">
+                        <div class="card-body">
+                            <h5 class="card-title">AP Resources</h5>
+                            <p class="card-text">Check out some of our curated AP Resources.</p>
+                            <button class="btn btn-light standard-link"><a href="/ap-frqs" class="standard-link">Explore</a></button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
+
+
+
 
 
 </body>
 
 <style>
 
+    .main{
+        background-color: white;
+        height: 100vh;
+    }
 
     .jumbotron{
-        height: 100%;
         width: 100%;
         margin-bottom: 0;
     }
@@ -37,6 +81,38 @@
         padding: 5%;
     }
 
+    .display-item{
+        text-align: center;
+        background-color: gray;
+        margin: 1%;
+    }
+
+
+
+    .d-container:nth-child(1){
+         animation: backInUp; /* referring directly to the animation's @keyframe declaration */
+          animation-duration: 2s; /* don't forget to set a duration! */
+    }
+    .d-container:nth-child(2){
+         animation: backInUp; /* referring directly to the animation's @keyframe declaration */
+          animation-duration: 2s; /* don't forget to set a duration! */
+    }
+    .d-container:nth-child(3){
+         animation: backInUp; /* referring directly to the animation's @keyframe declaration */
+          animation-duration: 2s; /* don't forget to set a duration! */
+    }
+    .row{
+        margin: 0;
+    }
+
+    .display-container{
+        padding: 2%;
+        height: 45%;
+    }
+
+    .display-container .card {
+        text-align: center;
+    }
 
 
 </style>
