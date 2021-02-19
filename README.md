@@ -1,5 +1,5 @@
 ## Quick Links
-- Live Deployed Website [here]<a href="(http://spring.sylicia.com/)" target="_blank"></a> !
+- Live Deployed Website !<a href="link" target="_blank"> http://spring.sylicia.com/ </a>
 - [Kanban Board](https://github.com/nathanielCherian/SpeedySalamanders/projects/1) includes tickets
 
 ## Technologies Used:
