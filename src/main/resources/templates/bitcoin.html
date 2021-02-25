@@ -23,7 +23,8 @@
         </div>
 
         <div class="row justify-content-center">
-            <input type="text" placeholder="txid" class="">
+            <input type="text" placeholder="txid" class="txid-input" value="3492e0ec39cfc64d1478b1463498f4b4805dc26b51831da989127ef6d5eb1a53">
+            <button class="btn btn-gray txid-lookup">Enter!</button>
         </div>
 
         <div class="row justify-content-center" id="transaction-box">
@@ -165,8 +166,8 @@
             $("#clicked-hex").html(`<code>${value}</code>`);
         }
 
-        const main = async() => {
-            const response = await fetch("/api/transaction/3492e0ec39cfc64d1478b1463498f4b4805dc26b51831da989127ef6d5eb1a53");
+        const lookupTXID = async(txid) => {
+            const response = await fetch("/api/transaction/"+txid);
             const {hex} = await response.json();
             console.log(hex);
 
@@ -179,10 +180,11 @@
 
         }
 
-        main();
 
-
-
+        $(".txid-lookup").on('click', function() {
+            console.log($(".txid-input").val());
+            lookupTXID($(".txid-input").val());
+        })
 
 
     </script>

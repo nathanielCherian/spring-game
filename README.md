@@ -20,6 +20,7 @@ of a bitcoin transaction.
 
 ## Contributors
  - Nathaniel Cherian [@nathanielCherian](https://github.com/nathanielCherian) 
+ - Jett Kim [@JettKim](https://github.com/JettKim)
 
 ## Runtime Instructions
 Requirements:
