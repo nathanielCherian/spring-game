@@ -16,6 +16,7 @@ public class People {
                 .create();
 
         people.createRow(new String[]{"name", "school"}, new Object[]{"Nathaniel C", "Del Norte"});
+        people.createRow(new String[]{"name", "school"}, new Object[]{"Alex T", "Del Norte"});
         Object[][] tableData = people.getFullTable();
         System.out.println(Arrays.deepToString(tableData));
 
