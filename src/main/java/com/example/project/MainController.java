@@ -6,15 +6,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
+
 
 @Controller
 public class MainController {
 
-    private People people = new People();
 
     @GetMapping("/ap-frqs")
     public String apfrqs(Model model){
-        System.out.println(people);
         return "apfrqs.html";
     }
 
