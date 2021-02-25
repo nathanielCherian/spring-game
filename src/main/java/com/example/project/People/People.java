@@ -19,7 +19,10 @@ public class People {
         Object[][] tableData = people.getFullTable();
         System.out.println(Arrays.deepToString(tableData));
 
+    }
 
+    public static void addPeople(){
+        //people.createRow(new String[]{"name", "school"}, new Object[]{"Nathaniel C", "Del Norte"});
     }
 
 }

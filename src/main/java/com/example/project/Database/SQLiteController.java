@@ -31,7 +31,8 @@ public class SQLiteController implements SQLCommands, SQLQueries{
     }
 
     private Connection dbConnection;
-    private String url = "jdbc:sqlite:Z:\\Computer Science\\ajavaTest\\spring-game\\database.db";
+    //private String url = "jdbc:sqlite:Z:\\Computer Science\\ajavaTest\\spring-game\\database.db";
+    private String url = "jdbc:sqlite:" + System.getProperty("java.io.tmpdir") + "database.db";
 
     public SQLiteController(){
         connectToDB();
@@ -53,7 +54,7 @@ public class SQLiteController implements SQLCommands, SQLQueries{
             if(conn != null){
                 DatabaseMetaData meta = conn.getMetaData();
                 System.out.println("drivername " + meta.getDriverName());
-                System.out.println("New Database Created!");
+                System.out.println("New Database Created @ " + url);
                 dbConnection = conn;
             }
 

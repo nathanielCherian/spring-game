@@ -17,6 +17,14 @@ to update the content on the website.
 - **Bitcoin API**: As a fun project to showcase on our website we are hosting a REST API that returns mutated data from the 
 blockchain. On top of this we created a front-end client-side application in javascript that allows you to explore the segment details
 of a bitcoin transaction.
+- **SQLite Wrapper**
+```
+Table people = new Table("People")
+        .addColumn(new Column("id", Column.INTEGER).isPrimaryKey().isUnique())
+        .addColumn(new Column("name", Column.STRING).isNotNull())
+        .addColumn(new Column("school", Column.STRING))
+        .create();
+```
 
 ## Contributors
  - Nathaniel Cherian [@nathanielCherian](https://github.com/nathanielCherian) 
