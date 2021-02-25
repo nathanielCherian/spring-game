@@ -1,5 +1,6 @@
 package com.example.project.Database;
 
+import org.json.simple.JSONArray;
 import org.sqlite.util.StringUtils;
 
 import java.sql.ResultSet;
@@ -66,5 +67,24 @@ public class Table {
         }
         return null;
     }
+
+    public JSONArray getFullTableJSON(){
+        ResultSet rs = controller.getTable(tableName);
+        JSONArray array = new JSONArray();
+        try{
+            while (rs.next()){
+                JSONArray row = new JSONArray();
+                for(int i=0;i<columns.size();i++){
+                    row.add(rs.getObject(i+1));
+                }
+                array.add(row);
+            }
+            return array;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return null;
+    }
+
 
 }

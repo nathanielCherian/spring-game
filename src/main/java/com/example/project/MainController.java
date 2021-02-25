@@ -14,7 +14,7 @@ public class MainController {
 
 
     @GetMapping("/ap-frqs")
-    public String apfrqs(Model model){
+    public String apfrqs(){
         return "apfrqs.html";
     }
 
@@ -33,5 +33,9 @@ public class MainController {
         return "readme.html";
     }
 
+    @GetMapping("/people")
+    public String people(){
+        return "people.html";
+    }
 
 }

@@ -39,11 +39,9 @@ public class People {
     }
 
     public JSONObject getTableData(){
-        Object[][] tableData = people.getFullTable();
-        JSONArray arr = new JSONArray();
-        arr.add(tableData);
+        JSONArray tableData = people.getFullTableJSON();
         JSONObject object = new JSONObject();
-        object.put("data", Arrays.deepToString(tableData));
+        object.put("data", tableData);
         return object;
     }
 
