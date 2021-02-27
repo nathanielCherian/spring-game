@@ -4,6 +4,7 @@ import org.sqlite.util.StringUtils;
 
 import javax.swing.plaf.nimbus.State;
 import java.io.File;
+import java.nio.file.Path;
 import java.sql.*;
 
 public class SQLiteController implements SQLCommands, SQLQueries{
@@ -32,7 +33,7 @@ public class SQLiteController implements SQLCommands, SQLQueries{
 
     private Connection dbConnection;
     //private String url = "jdbc:sqlite:Z:\\Computer Science\\ajavaTest\\spring-game\\database.db";
-    private String url = "jdbc:sqlite:" + System.getProperty("java.io.tmpdir") + "database.db";
+    private String url = "jdbc:sqlite:" + System.getProperty("java.io.tmpdir") + File.separator + "database.db";
 
     public SQLiteController(){
         connectToDB();
@@ -41,6 +42,7 @@ public class SQLiteController implements SQLCommands, SQLQueries{
     private void connectToDB(){
         try{
             dbConnection = DriverManager.getConnection(url);
+            System.out.println("Connected to database @ " + url);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
             System.out.println("Database does not exist. Creating new one...");
@@ -104,8 +106,17 @@ public class SQLiteController implements SQLCommands, SQLQueries{
         executeCommand(command);
     }
 
+    @Override
+    public void deleteRowByColumn(String tableName, String columnName, String targetValue) {
+        String command = """
+                DELETE FROM %s
+                WHERE %s = %s;
+                """.formatted(tableName, columnName, targetValue);
+        executeCommand(command);
+    }
 
-    private void executeCommand(String command){
+
+    public void executeCommand(String command){
         System.out.println("execute command: \n" + command);
         try{
             Statement statement = dbConnection.createStatement();

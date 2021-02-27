@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Bitcoin | SpeedySalamanders</title>
+    <title>People | SpeedySalamanders</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
@@ -100,7 +100,7 @@
 
         const name = $("#nameInput").val();
         const school = $("#schoolInput").val();
-
+        const actionCode = "CREATE";
 
         console.log({name, school});
         console.log($(".add-form").serializeArray());
@@ -108,7 +108,7 @@
         $.ajax({
         type:"POST",
         url:"/api/db/people",
-        data: JSON.stringify({name, school}),
+        data: JSON.stringify({name, school, actionCode}),
         contentType: "text/plain",
         success: (e)=>{
                 console.log("SUCCESS");
@@ -122,6 +122,33 @@
 
     });
 
+    $("#data-here").on("click", ".delete-button", function(e){
+        console.log($(this));
+        const element = $(this).parent().parent().find(".id-val");
+        console.log(element);
+        console.log(element.text());
+
+        const idToRemove = parseInt(element.text());
+        const actionCode = "DELETE_BY_ID";
+
+        $.ajax({
+            type:"POST",
+            url:"/api/db/people",
+            data: JSON.stringify({actionCode, idToRemove}),
+            contentType: "text/plain",
+            success: (e)=>{
+                    console.log("SUCCESS");
+                    location.reload();
+                },
+            error: (e) => {
+                console.warn("Failed to send.");
+            }
+        });
+
+    });
+
+
+
 
     const parseData = (data) => {
 
@@ -131,11 +158,11 @@
             console.log(row);
             items += `
                 <tr>
-                    <th scope="row">${id}</th>
+                    <th scope="row" class="id-val">${id}</th>
                     <td>${name}</td>
                     <td>${school}</td>
                     <td>
-                        <button class="btn btn-danger btn-sm" disabled>Delete</button>
+                        <button class="btn btn-danger btn-sm delete-button">Delete</button>
                         <button class="btn btn-secondary btn-sm" disabled>Edit</button>
                     </td>
                 </tr>

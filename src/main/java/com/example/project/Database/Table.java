@@ -50,6 +50,11 @@ public class Table {
         controller.addRow(this.tableName, specifiedColumns, dataVals);
     }
 
+    public void deleteRow(int columnIndex, Object value){
+        String c = columnNames[columnIndex];
+        controller.deleteRowByColumn(this.tableName, c, value.toString());
+    }
+
     public Object[][] getFullTable(){
         ResultSet rs = controller.getTable(tableName);
         ArrayList<Object[]> fullTable = new ArrayList<>();
@@ -84,6 +89,11 @@ public class Table {
             throwables.printStackTrace();
         }
         return null;
+    }
+
+
+    public void executeRawCommand(String command){
+        controller.executeCommand(command);
     }
 
 

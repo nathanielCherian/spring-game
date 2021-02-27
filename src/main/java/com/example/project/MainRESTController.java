@@ -29,16 +29,17 @@ public class MainRESTController {
 
     //used to get and query data
     @RequestMapping(value = "/api/db/people", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public String peopleGetApi(){
+    public String peopleGetAPI(){
         JSONObject object = people.getTableData();
         return object.toJSONString();
     }
 
-    //Used to
+    //Used to CD
     @RequestMapping(value = "/api/db/people", method = RequestMethod.POST, consumes = "text/plain")
-    public String peoplePostApi(@RequestBody String payload){
-        String statuscode = people.addPersonFromString(payload);
+    public String peoplePostAPI(@RequestBody String payload){
+        String statuscode = people.parseJSON(payload);
         return statuscode;
     }
+
 
 }
