@@ -17,8 +17,14 @@ public class Table {
     public Table(String tableName){
         this.tableName = tableName;
         this.controller = new SQLiteController();
+
+        turnOnForeignKey();
     }
 
+    public void turnOnForeignKey(){
+        System.out.println("turning on foreign keys...");
+        this.controller.executeCommand("PRAGMA foreign_keys = ON;\n");
+    }
 
     public Table create(){
         controller.createTable(tableName, columns.toArray(new Column[columns.size()]));
@@ -34,7 +40,7 @@ public class Table {
         return this;
     }
 
-    public void createRow(String[] specifiedColumns, Object[] data){
+    public void createRow(Object[] data){
 
         /*
         Add validation here
@@ -42,12 +48,20 @@ public class Table {
         - value type
          */
 
-        String[] dataVals = new String[data.length];
+        if(data.length != columnNames.length) return;
+
+        ArrayList<String> dataVals = new ArrayList<>();
+        ArrayList<String> specifiedCols = new ArrayList<>();
         for(int i=0;i<data.length;i++){
-            dataVals[i] = "'%s'".formatted(data[i].toString());
+            if(data[i] == null){
+                //dataVals[i] = "null";
+                continue;
+            }
+            dataVals.add("'%s'".formatted(data[i].toString()));
+            specifiedCols.add(columnNames[i]);
         }
 
-        controller.addRow(this.tableName, specifiedColumns, dataVals);
+        controller.addRow(this.tableName, specifiedCols.toArray(new String[specifiedCols.size()]), dataVals.toArray(new String[dataVals.size()]));
     }
 
     public void deleteRow(int columnIndex, Object value){

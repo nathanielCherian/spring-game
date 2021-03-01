@@ -28,9 +28,19 @@ public class People {
                 .addColumn(new Column("school", Column.STRING))
                 .create();
 
-        people.createRow(new String[]{"name", "school"}, new Object[]{"Nathaniel C", "Del Norte"});
+        people.createRow(new Object[]{null, "Nathaniel C", "Del Norte"});
         Object[][] tableData = people.getFullTable();
         System.out.println(Arrays.deepToString(tableData));
+
+        Table relationships = new Table("Relationships")
+                .addColumn(new Column("id", Column.INTEGER).isPrimaryKey().isUnique())
+                .addColumn(new Column("personId", Column.INTEGER).isForeignKey("People", "id", Column.CASCADE))
+                .addColumn(new Column("personId2", Column.INTEGER).isForeignKey("People", "id", Column.CASCADE))
+                .create();
+        relationships.createRow(new Object[]{null,1,100});
+        System.out.println(Arrays.deepToString(relationships.getFullTable()));
+
+
     }
 
 
@@ -88,7 +98,7 @@ public class People {
            - bleach
          */
 
-        people.createRow(keys.toArray(new String[keys.size()]), values.toArray());
+        people.createRow(values.toArray());
         return "200";
     }
 

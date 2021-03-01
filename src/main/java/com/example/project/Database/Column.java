@@ -14,7 +14,14 @@ public class Column {
     public static String STRING = "STRING";
     public static String BLOB = "BLOB";
 
+    public static String SET_NULL = "SET NULL";
+    public static String SET_DEFAULT = "SET DEFAULT";
+    public static String RESTRICT = "RESTRICT";
+    public static String NO_ACTION = "NO ACTION";
+    public static String CASCADE = "CASCADE";
+
     private ArrayList<String> columnData = new ArrayList<>();
+    private ArrayList<String> etcData = new ArrayList<>();
 
 
     public Column(String name, String type){
@@ -42,9 +49,18 @@ public class Column {
         return this;
     }
 
+    public Column isForeignKey(String tableName, String columnName, String onUpdateDelete){
+        this.etcData.add("FOREIGN KEY (%s) REFERENCES %s (%s) ON UPDATE %s ON DELETE %s".formatted(columnData.get(0), tableName, columnName, onUpdateDelete, onUpdateDelete));
+        return this;
+    }
+
 
     public String toString(){
         return String.join(" ", columnData);
+    }
+
+    public String getEtcData(){
+        return String.join(" ", etcData);
     }
 
     public String getName(){

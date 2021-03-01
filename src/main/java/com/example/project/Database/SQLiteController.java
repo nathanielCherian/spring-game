@@ -6,6 +6,8 @@ import javax.swing.plaf.nimbus.State;
 import java.io.File;
 import java.nio.file.Path;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class SQLiteController implements SQLCommands, SQLQueries{
 
@@ -69,10 +71,13 @@ public class SQLiteController implements SQLCommands, SQLQueries{
     @Override
     public void createTable(String tableName, Column[] columns) {
 
-        String[] cms = new String[columns.length];
-        for(int i=0;i<cms.length;i++){
-            cms[i] = columns[i].toString();
+        ArrayList<String> cms = new ArrayList<>();
+        ArrayList<String> etcs = new ArrayList<>();
+        for(int i=0;i<columns.length;i++){
+            cms.add(columns[i].toString());
+            if(!columns[i].getEtcData().equals("")) etcs.add(columns[i].getEtcData());
         }
+        cms.addAll(etcs);
         String cmData = String.join(", \n", cms);
 
         String command = """
