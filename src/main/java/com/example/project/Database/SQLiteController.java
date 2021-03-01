@@ -34,7 +34,6 @@ public class SQLiteController implements SQLCommands, SQLQueries{
     }
 
     private Connection dbConnection;
-    //private String url = "jdbc:sqlite:Z:\\Computer Science\\ajavaTest\\spring-game\\database.db";
     private String url = "jdbc:sqlite:" + System.getProperty("java.io.tmpdir") + File.separator + "database.db";
 
     public SQLiteController(){

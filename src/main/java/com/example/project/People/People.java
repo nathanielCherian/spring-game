@@ -40,17 +40,24 @@ public class People {
         relationships.createRow(new Object[]{null,1,100});
         System.out.println(Arrays.deepToString(relationships.getFullTable()));
 
-
     }
 
 
     private Table people;
+    private Table relationships;
     public People(){
         people = new Table("People")
                 .addColumn(new Column("id", Column.INTEGER).isPrimaryKey().isUnique())
                 .addColumn(new Column("name", Column.STRING).isNotNull())
                 .addColumn(new Column("school", Column.STRING))
                 .create();
+
+        relationships = new Table("Relationships")
+                .addColumn(new Column("id", Column.INTEGER).isPrimaryKey().isUnique())
+                .addColumn(new Column("personId1", Column.INTEGER).isForeignKey("People", "id", Column.CASCADE))
+                .addColumn(new Column("personId2", Column.INTEGER).isForeignKey("People", "id", Column.CASCADE))
+                .create();
+
     }
 
 
@@ -66,6 +73,8 @@ public class People {
                     return addPersonFromJSON(object);
                 case "DELETE_BY_ID":
                     return removePersonByID(object);
+                case "CREATE_RELATIONSHIP":
+                    return addRelationshipFromJSON(object);
                 case "ADMIN":
                     return adminCommand(object);
                 default:
@@ -88,9 +97,19 @@ public class People {
         return object;
     }
 
+    public JSONObject getTableDataRelationship(){
+        JSONArray tableData = relationships.getFullTableJSON();
+        JSONObject object = new JSONObject();
+        object.put("data", tableData);
+        return object;
+    }
+
     public String addPersonFromJSON(JSONObject object){
-        Set<String> keys = object.keySet();
-        Collection<String> values = object.values();
+
+        Object[] data = new Object[3];
+        data[0] = null; //id
+        data[1] = (String) object.get("name");
+        data[2] = (String) object.get("school");
 
         /*
            ADD VALIDATION HERE
@@ -98,7 +117,7 @@ public class People {
            - bleach
          */
 
-        people.createRow(values.toArray());
+        people.createRow(data);
         return "200";
     }
 
@@ -117,12 +136,16 @@ public class People {
         return "200";
     }
 
-    /*
-    public String adminQuery(JSONObject object){
-        String query = (String) object.get("query");
+
+    public String addRelationshipFromJSON(JSONObject object){
+
+        Object[] data = new Object[3];
+        data[0] = null; //auto-inc id
+        data[1] = Long.valueOf((Long) object.get("personId1")).intValue();
+        data[2] = Long.valueOf((Long) object.get("personId2")).intValue();
+        relationships.createRow(data);
+
+        return "200";
     }
-    */
-
-
 
 }

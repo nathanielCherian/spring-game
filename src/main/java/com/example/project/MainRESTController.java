@@ -41,5 +41,19 @@ public class MainRESTController {
         return statuscode;
     }
 
+    //used to get and query data
+    @RequestMapping(value = "/api/db/relationships", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public String relationshipGetAPI(){
+        JSONObject object = people.getTableDataRelationship();
+        return object.toJSONString();
+    }
+
+    //Used to CD
+    @RequestMapping(value = "/api/db/relationships", method = RequestMethod.POST, consumes = "text/plain")
+    public String relationshipPostAPI(@RequestBody String payload){
+        String statuscode = people.parseJSON(payload);
+        return statuscode;
+    }
+
 
 }

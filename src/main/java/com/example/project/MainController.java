@@ -38,4 +38,9 @@ public class MainController {
         return "people.html";
     }
 
+    @GetMapping("/relationships")
+    public String relationships(){
+        return "relationships.html";
+    }
+
 }
