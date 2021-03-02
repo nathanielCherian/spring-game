@@ -43,4 +43,8 @@ public class MainController {
         return "relationships.html";
     }
 
+    @GetMapping("/people-map")
+    public String peopleMap(){
+        return "map.html";
+    }
 }

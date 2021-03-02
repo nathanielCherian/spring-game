@@ -34,6 +34,14 @@ public class MainRESTController {
         return object.toJSONString();
     }
 
+    //Used to get person by id
+    @RequestMapping(value = "/api/db/people/{personId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public String getPeopleByIDAPI(@PathVariable Long personId){
+        return people.getPersonFromId(personId.intValue());
+    }
+
+
+
     //Used to CD
     @RequestMapping(value = "/api/db/people", method = RequestMethod.POST, consumes = "text/plain")
     public String peoplePostAPI(@RequestBody String payload){

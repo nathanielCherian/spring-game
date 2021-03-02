@@ -104,6 +104,16 @@ public class People {
         return object;
     }
 
+
+    public String getPersonFromId(int id){
+        JSONArray personData = people.getRowsByColumn("id", id);
+        JSONArray relationshipData = relationships.getRowsByColumn("personId1", id);
+        JSONObject object = (JSONObject) personData.get(0);
+        object.put("relationships", relationshipData);
+
+        return object.toJSONString();
+    }
+
     public String addPersonFromJSON(JSONObject object){
 
         Object[] data = new Object[3];
