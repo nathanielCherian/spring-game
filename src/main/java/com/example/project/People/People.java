@@ -153,6 +153,7 @@ public class People {
         data[0] = null; //auto-inc id
         data[1] = Long.valueOf((Long) object.get("personId1")).intValue();
         data[2] = Long.valueOf((Long) object.get("personId2")).intValue();
+        if(data[1] == data[2]) return "400"; //force unique
         relationships.createRow(data);
 
         return "200";
