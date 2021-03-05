@@ -130,47 +130,6 @@
       {"data":{"id":"e69","sbgnclass":"production","sbgncardinality":0,"source":"glyph25","target":"glyph27","portsource":"glyph25","porttarget":"glyph27"},"position":{},"group":"edges","removed":false,"selected":false,"selectable":true,"locked":false,"grabbed":false,"grabbable":true,"classes":""}]
 });*/
 
-/*
-fetch('https://raw.githubusercontent.com/cytoscape/cytoscape.js/master/documentation/demos/circle-layout/data.json')
-  .then(function(res) {
-    return res.json()
-  })
-  .then(function(data) {
-    var cy = window.cy = cytoscape({
-      container: document.getElementById('cy'),
-
-      boxSelectionEnabled: false,
-      autounselectify: true,
-
-      layout: {
-        name: 'cose-bilkent'
-      },
-
-      style: [
-        {
-          selector: 'node',
-          style: {
-            'height': 20,
-            'width': 20,
-            'background-color': '#e8e406'
-          }
-        },
-
-        {
-          selector: 'edge',
-          style: {
-            'curve-style': 'haystack',
-            'haystack-radius': 0,
-            'width': 5,
-            'opacity': 0.5,
-            'line-color': '#f2f08c'
-          }
-        }
-      ],
-
-      elements: data
-    });
-  });*/
 
 
 /*
@@ -194,6 +153,8 @@ fetch('https://raw.githubusercontent.com/cytoscape/cytoscape.js/master/documenta
     });
 */
 
+
+
     const getNodesAndEdges = async() => {
         const people = fetch("/api/db/people").then(res=> res.json());
         const relationships = fetch("/api/db/relationships").then(res=> res.json());
@@ -210,15 +171,6 @@ fetch('https://raw.githubusercontent.com/cytoscape/cytoscape.js/master/documenta
 
         console.log({elements});
         return elements;
-
-        /*
-        peopleData.forEach(p => {
-            createNode(...p)
-        });
-
-        relationshipData.forEach(r => {
-            createEdge(...r)
-        });*/
 
     }
 
@@ -262,7 +214,7 @@ fetch('https://raw.githubusercontent.com/cytoscape/cytoscape.js/master/documenta
                   node.css("width", 50);
                   node.css("height", 50);
                 });
-                this.layout({name: 'cose-bilkent', animationDuration: 1000}).run();
+                this.layout({name: 'cose-bilkent', animationDuration: 1000, nodeRepulsion: 8500}).run();
               },
 
               style: [
@@ -272,7 +224,13 @@ fetch('https://raw.githubusercontent.com/cytoscape/cytoscape.js/master/documenta
                     'background-color': '#ad1a66'
                   }
                 },
-
+                {
+                    selector: 'node',
+                    style: {
+                      'label': 'data(name)',
+                      'text-align':'center'
+                    }
+              },
                 {
                   selector: 'edge',
                   style: {
