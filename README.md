@@ -2,6 +2,16 @@
 - Live Deployed Website [here](http://spring.sylicia.com/)!
 - [Kanban Board](https://github.com/nathanielCherian/spring-game/projects/1) includes tickets
 
+## Main Website (Deployment)
+
+## Dark Mode
+
+## Bitcoin Transaction Decoder
+
+## Database API
+
+## Representational Map
+
 ## Highlighted Features
 - **Dark Mode with Cookies**: for dark mode we are using cookies to store the user's theme preference
 This way if a user chooses to use dark mode it will save their selection and the next time they use the
