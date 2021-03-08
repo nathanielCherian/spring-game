@@ -29,6 +29,7 @@ Table people = new Table("People")
 ## Contributors
  - Nathaniel Cherian [@nathanielCherian](https://github.com/nathanielCherian) 
  - Jett Kim [@JettKim](https://github.com/JettKim)
+ - Alex Titov [@alextitov19](https://github.com/alextitov19)
 
 ## Runtime Instructions
 Requirements:
