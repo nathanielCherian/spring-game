@@ -2,15 +2,11 @@
 - Live Deployed Website [here](http://spring.sylicia.com/)!
 - [Kanban Board](https://github.com/nathanielCherian/spring-game/projects/1) includes tickets
 - [Commercial](https://www.youtube.com/watch?v=Jxi7qnZ0sfo) for N@TM
-- [Bitcoin Transaction Decoder](http://spring.sylicia.com/bitcoin)
-- [People List User Data](http://spring.sylicia.com/people)
-- [Relationships](http://spring.sylicia.com/relationships)
-- [Representational Map](http://spring.sylicia.com/people-map)
 
-## [Main Website (Deployment)](http://spring.sylicia.com/)
+## Main Website (Deployment)
 - http://spring.sylicia.com/ deployed through AWS EC2
 - Frontend development with HTML, CSS, and JS
-- Backend API's for data
+- Backend uses java Spring and thymeleaf
 
 ## Dark Mode
 ![lightmode](https://user-images.githubusercontent.com/54604091/110505920-75df4580-80b3-11eb-9e0b-4850122a5184.PNG)
