@@ -1,6 +1,7 @@
 ## Quick Links
 - Live Deployed Website [here](http://spring.sylicia.com/)!
 - [Kanban Board](https://github.com/nathanielCherian/spring-game/projects/1) includes tickets
+- [Commercial](https://www.youtube.com/watch?v=Jxi7qnZ0sfo) for N@TM
 
 ## Main Website (Deployment)
 - http://spring.sylicia.com/ deployed through AWS EC2
