@@ -21,7 +21,7 @@
 - Uses stored database of "people"
 - Uses connections to organize and connect "people" together using relationships tab
 
-![peoplemap](https://user-images.githubusercontent.com/54604091/110501261-d91aa900-80ae-11eb-9766-c499c9332bef.PNG)
+![peoplemap](https://user-images.githubusercontent.com/54604091/110501261-d91aa900-80ae-11eb-9766-c499c9332bef.PNG)![peopl](https://user-images.githubusercontent.com/54604091/110505518-13864500-80b3-11eb-854b-9e3c48f51037.png)
 
 ## Highlighted Features
 - **Dark Mode with Cookies**: for dark mode we are using cookies to store the user's theme preference
