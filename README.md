@@ -7,7 +7,7 @@
 - [Relationships](http://spring.sylicia.com/relationships)
 - [Representational Map](http://spring.sylicia.com/people-map)
 
-## Main Website (Deployment)
+## [Main Website (Deployment)](http://spring.sylicia.com/)
 - http://spring.sylicia.com/ deployed through AWS EC2
 - Frontend development with HTML, CSS, and JS
 - Backend API's for data
