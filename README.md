@@ -5,12 +5,17 @@
 ## Main Website (Deployment)
 
 ## Dark Mode
+- Top-right toggle button
+- Changes background website theme to dark black/grey
 
 ## Bitcoin Transaction Decoder
+- Uses existing API to decode any bitcoin transaction
 
 ## Database API
 
 ## Representational Map
+- Uses stored database of "people"
+- Uses connections to organize and connect "people" together using relationships tab
 
 ## Highlighted Features
 - **Dark Mode with Cookies**: for dark mode we are using cookies to store the user's theme preference
