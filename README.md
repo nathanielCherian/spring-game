@@ -3,6 +3,9 @@
 - [Kanban Board](https://github.com/nathanielCherian/spring-game/projects/1) includes tickets
 
 ## Main Website (Deployment)
+- http://spring.sylicia.com/ deployed through AWS EC2
+- Frontend development with HTML, CSS, and JS
+- Backend API's for data
 
 ## Dark Mode
 - Top-right toggle button
