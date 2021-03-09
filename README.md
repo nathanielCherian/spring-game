@@ -2,6 +2,10 @@
 - Live Deployed Website [here](http://spring.sylicia.com/)!
 - [Kanban Board](https://github.com/nathanielCherian/spring-game/projects/1) includes tickets
 - [Commercial](https://www.youtube.com/watch?v=Jxi7qnZ0sfo) for N@TM
+- [Bitcoin Transaction Decoder](http://spring.sylicia.com/bitcoin)
+- [People](http://spring.sylicia.com/people)
+- [Relationships](http://spring.sylicia.com/relationships)
+- [People Map](http://spring.sylicia.com/people-map)
 
 ## Main Website (Deployment)
 - http://spring.sylicia.com/ deployed through AWS EC2
