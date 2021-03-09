@@ -8,14 +8,21 @@
 - Backend API's for data
 
 ## Dark Mode
-- Top-right toggle button
-- Changes background website theme to dark black/grey
-
 ![lightmode](https://user-images.githubusercontent.com/54604091/110505920-75df4580-80b3-11eb-9e0b-4850122a5184.PNG)
 ![darkmode](https://user-images.githubusercontent.com/54604091/110505927-78419f80-80b3-11eb-8914-83a66514c8f4.PNG)
+- Created with javascript and uses cookies to track users selection
+- Using css to `mix-blend-mode` property to change children elements contrast in relation to parents
+[Code](https://github.com/nathanielCherian/spring-game/blob/master/src/main/resources/templates/fragments/header.html#L61-L110)
+
 
 ## Bitcoin Transaction Decoder
-- Uses existing API to decode any bitcoin transaction
+- Uses existing API from [blockchain.com](https://www.blockchain.com/) to get hex data of a transaction in Java
+- Parse this data to a simpler and more readable format and create our own endpoint [here](http://spring.sylicia.com/api/transaction/3492e0ec39cfc64d1478b1463498f4b4805dc26b51831da989127ef6d5eb1a530)
+- Use javascript fetch with asynchronous programming to get data from our endpoint
+- Split up the hex block by byte size and jquery/html to render it to user
+
+[Javascript code](https://github.com/nathanielCherian/spring-game/blob/master/src/main/resources/templates/bitcoin.html#L100-L187)
+[Java code] ()
 
 ![thing_50](https://user-images.githubusercontent.com/54604091/110501593-2f87e780-80af-11eb-864d-49f24ca5cfd8.png)
 
