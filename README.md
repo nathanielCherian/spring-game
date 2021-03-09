@@ -13,6 +13,7 @@
 ![darkmode](https://user-images.githubusercontent.com/54604091/110505927-78419f80-80b3-11eb-8914-83a66514c8f4.PNG)
 - Created with javascript and uses cookies to track users selection
 - Using css `mix-blend-mode` property to change children elements contrast in relation to parents
+- Using thymeleaf we are able to store this as a fragment that can be inserted into every page programatically
 
 [Code](https://github.com/nathanielCherian/spring-game/blob/master/src/main/resources/templates/fragments/header.html#L61-L110)
 
