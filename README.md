@@ -3,9 +3,6 @@
 - [Kanban Board](https://github.com/nathanielCherian/spring-game/projects/1) includes tickets
 
 ## Main Website (Deployment)
-- http://spring.sylicia.com/ deployed through AWS EC2
-- Frontend development with HTML, CSS, and JS
-- Backend API's for data
 
 ## Dark Mode
 - Top-right toggle button
@@ -24,7 +21,7 @@
 - Uses stored database of "people"
 - Uses connections to organize and connect "people" together using relationships tab
 
-![peoplemap](https://user-images.githubusercontent.com/54604091/110501261-d91aa900-80ae-11eb-9766-c499c9332bef.PNG)![people](https://user-images.githubusercontent.com/54604091/110504314-e38a7200-80b1-11eb-957b-69a715bd9963.PNG)
+![peoplemap](https://user-images.githubusercontent.com/54604091/110501261-d91aa900-80ae-11eb-9766-c499c9332bef.PNG)
 
 ## Highlighted Features
 - **Dark Mode with Cookies**: for dark mode we are using cookies to store the user's theme preference
@@ -66,11 +63,11 @@ Steps:
 3. Navigate to [localhost:8080](http://localhost:8080/)
 
 ## Technologies Used:
-- Websocket Protocol
-- ThreeJS
-- Javascript canvas
-- Nginx
-- AWS EC2
+- Websocket Protocol: HTTP function runs as a server that responds to requests.
+- ThreeJS:You can use Three. js in any way you could use "canvas" , including full-screen animations, or slides and has to connect with our Websocket and AWS.
+- Javascript canvas: HTML element which can be used to draw graphics via scripting. This can be used to draw graphs, combine photos, or create simple (and not so simple) animations.
+- Nginx:HTTP server and reverse proxy(a gate way between the internet and the website browser)
+- AWS EC2: a web service that provides secure, resizable compute capacity in the cloud. It is designed to make web-scale cloud computing easier for developers.
 
 ## Planned
 - ReactJS
