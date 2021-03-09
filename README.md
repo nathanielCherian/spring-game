@@ -11,7 +11,8 @@
 ![lightmode](https://user-images.githubusercontent.com/54604091/110505920-75df4580-80b3-11eb-9e0b-4850122a5184.PNG)
 ![darkmode](https://user-images.githubusercontent.com/54604091/110505927-78419f80-80b3-11eb-8914-83a66514c8f4.PNG)
 - Created with javascript and uses cookies to track users selection
-- Using css to `mix-blend-mode` property to change children elements contrast in relation to parents
+- Using css `mix-blend-mode` property to change children elements contrast in relation to parents
+
 [Code](https://github.com/nathanielCherian/spring-game/blob/master/src/main/resources/templates/fragments/header.html#L61-L110)
 
 
@@ -22,17 +23,62 @@
 - Split up the hex block by byte size and jquery/html to render it to user
 
 [Javascript code](https://github.com/nathanielCherian/spring-game/blob/master/src/main/resources/templates/bitcoin.html#L100-L187)
-[Java code] ()
+
+[Java code] (https://github.com/nathanielCherian/spring-game/blob/master/src/main/java/com/example/project/api/BitcoinAPI.java)
+
 
 ![thing_50](https://user-images.githubusercontent.com/54604091/110501593-2f87e780-80af-11eb-864d-49f24ca5cfd8.png)
 
 ## Database API
+- We are using the `sqlite-jdbc` java package to manage our database server-side
+- Custom [java wrapper](https://github.com/nathanielCherian/spring-game/blob/master/src/main/java/com/example/project/Database/Table.java) and [SQLite Controller](https://github.com/nathanielCherian/spring-game/blob/master/src/main/java/com/example/project/Database/SQLiteController.java) that allows us to convert java objects into their SQL counterparts
+Example:
+```
+Table people = new Table("People")
+        .addColumn(new Column("id", Column.INTEGER).isPrimaryKey().isUnique())
+        .addColumn(new Column("name", Column.STRING).isNotNull())
+        .addColumn(new Column("school", Column.STRING))
+        .create();
+```
+People are added to the databse with
+```
+Object[] data = new Object[3];
+data[0] = null; //id
+data[1] = (String) object.get("name");
+data[2] = (String) object.get("school");
+people.createRow(data);
+```
+
+In order to represent the many-to-many releationships between different people in the database we are using a second table that holds a foreign key to the peoples table ID column.
+```
+Table relationships = new Table("Relationships")
+        .addColumn(new Column("id", Column.INTEGER).isPrimaryKey().isUnique())
+        .addColumn(new Column("personId1", Column.INTEGER).isForeignKey("People", "id", Column.CASCADE))
+        .addColumn(new Column("personId2", Column.INTEGER).isForeignKey("People", "id", Column.CASCADE))
+        .create();
+```
+
+[Implementation](https://github.com/nathanielCherian/spring-game/blob/master/src/main/java/com/example/project/People/People.java#L49-L60)
+
+
+To allow the database to connect to the internet we are using json communication through POST requests at [this endpoint](http://spring.sylicia.com/api/db/people).
+```
+@RequestMapping(value = "/api/db/people", method = RequestMethod.POST, consumes = "text/plain")
+        public String peoplePostAPI(@RequestBody String payload){
+        String statuscode = people.parseJSON(payload);
+        return statuscode;
+}
+```
+[Implementation](https://github.com/nathanielCherian/spring-game/blob/master/src/main/java/com/example/project/MainRESTController.java#L30-L64)
 
 ## Representational Map
 - Uses stored database of "people"
 - Uses connections to organize and connect "people" together using relationships tab
 
 ![peoplemap](https://user-images.githubusercontent.com/54604091/110501261-d91aa900-80ae-11eb-9766-c499c9332bef.PNG)![peopl](https://user-images.githubusercontent.com/54604091/110505518-13864500-80b3-11eb-854b-9e3c48f51037.png)
+
+
+
 
 ## Highlighted Features
 - **Dark Mode with Cookies**: for dark mode we are using cookies to store the user's theme preference
@@ -57,7 +103,6 @@ Table people = new Table("People")
         .addColumn(new Column("school", Column.STRING))
         .create();
 ```
-
 ## Contributors
  - Nathaniel Cherian [@nathanielCherian](https://github.com/nathanielCherian) 
  - Jett Kim [@JettKim](https://github.com/JettKim)
