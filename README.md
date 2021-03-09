@@ -5,7 +5,7 @@
 - [Bitcoin Transaction Decoder](http://spring.sylicia.com/bitcoin)
 - [People List User Data](http://spring.sylicia.com/people)
 - [Relationships](http://spring.sylicia.com/relationships)
-- [People Map](http://spring.sylicia.com/people-map)
+- [Representational Map](http://spring.sylicia.com/people-map)
 
 ## Main Website (Deployment)
 - http://spring.sylicia.com/ deployed through AWS EC2
@@ -45,7 +45,7 @@ Table people = new Table("People")
         .addColumn(new Column("school", Column.STRING))
         .create();
 ```
-People are added to the databse with
+[People](http://spring.sylicia.com/people) are added to the databse with
 ```
 Object[] data = new Object[3];
 data[0] = null; //id
@@ -54,7 +54,7 @@ data[2] = (String) object.get("school");
 people.createRow(data);
 ```
 
-In order to represent the many-to-many releationships between different people in the database we are using a second table that holds a foreign key to the peoples table ID column.
+In order to represent the many-to-many [releationships](http://spring.sylicia.com/relationships) between different people in the database we are using a second table that holds a foreign key to the peoples table ID column.
 ```
 Table relationships = new Table("Relationships")
         .addColumn(new Column("id", Column.INTEGER).isPrimaryKey().isUnique())
@@ -76,7 +76,7 @@ To allow the database to connect to the internet we are using json communication
 ```
 [Implementation](https://github.com/nathanielCherian/spring-game/blob/master/src/main/java/com/example/project/MainRESTController.java#L30-L64)
 
-## Representational Map
+## [Representational Map](http://spring.sylicia.com/people-map)
 ![peoplemap](https://user-images.githubusercontent.com/54604091/110501261-d91aa900-80ae-11eb-9766-c499c9332bef.PNG)![peopl](https://user-images.githubusercontent.com/54604091/110505518-13864500-80b3-11eb-854b-9e3c48f51037.png)
 
 - To represent the many-to-many relationships between users in the database we are using a node-edge-graph that is commonly used to illustrate friendships on social media.
