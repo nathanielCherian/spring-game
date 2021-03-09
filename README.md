@@ -8,7 +8,8 @@
 - Top-right toggle button
 - Changes background website theme to dark black/grey
 
-![lightmode](https://user-images.githubusercontent.com/54604091/110501903-82fa3580-80af-11eb-9df2-2a9657a58f48.PNG)![darkmode](https://user-images.githubusercontent.com/54604091/110501893-8097db80-80af-11eb-8f74-acd06f933a0f.PNG)
+![lightmode](https://user-images.githubusercontent.com/54604091/110505920-75df4580-80b3-11eb-9e0b-4850122a5184.PNG)
+![darkmode](https://user-images.githubusercontent.com/54604091/110505927-78419f80-80b3-11eb-8914-83a66514c8f4.PNG)
 
 ## Bitcoin Transaction Decoder
 - Uses existing API to decode any bitcoin transaction
