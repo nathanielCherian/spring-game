@@ -17,18 +17,17 @@
 
 
 ## Bitcoin Transaction Decoder
+![thing_50](https://user-images.githubusercontent.com/54604091/110501593-2f87e780-80af-11eb-864d-49f24ca5cfd8.png)
+
 - Uses existing API from [blockchain.com](https://www.blockchain.com/) to get hex data of a transaction in Java
 - Parse this data to a simpler and more readable format and create our own endpoint [here](http://spring.sylicia.com/api/transaction/3492e0ec39cfc64d1478b1463498f4b4805dc26b51831da989127ef6d5eb1a530)
 - Use javascript fetch with asynchronous programming to get data from our endpoint
 - Split up the hex block by byte size and jquery/html to render it to user
 
-[Javascript code](https://github.com/nathanielCherian/spring-game/blob/master/src/main/resources/templates/bitcoin.html#L100-L187)
+[Javascript code implementaiton](https://github.com/nathanielCherian/spring-game/blob/master/src/main/resources/templates/bitcoin.html#L100-L187)
 
-[Java code] (https://github.com/nathanielCherian/spring-game/blob/master/src/main/java/com/example/project/api/BitcoinAPI.java)
-
-
-![thing_50](https://user-images.githubusercontent.com/54604091/110501593-2f87e780-80af-11eb-864d-49f24ca5cfd8.png)
-
+[Java code implementation](https://github.com/nathanielCherian/spring-game/blob/master/src/main/java/com/example/project/api/BitcoinAPI.java)
+ 
 ## Database API
 - We are using the `sqlite-jdbc` java package to manage our database server-side
 - Custom [java wrapper](https://github.com/nathanielCherian/spring-game/blob/master/src/main/java/com/example/project/Database/Table.java) and [SQLite Controller](https://github.com/nathanielCherian/spring-game/blob/master/src/main/java/com/example/project/Database/SQLiteController.java) that allows us to convert java objects into their SQL counterparts
@@ -72,13 +71,14 @@ To allow the database to connect to the internet we are using json communication
 [Implementation](https://github.com/nathanielCherian/spring-game/blob/master/src/main/java/com/example/project/MainRESTController.java#L30-L64)
 
 ## Representational Map
-- Uses stored database of "people"
-- Uses connections to organize and connect "people" together using relationships tab
-
 ![peoplemap](https://user-images.githubusercontent.com/54604091/110501261-d91aa900-80ae-11eb-9766-c499c9332bef.PNG)![peopl](https://user-images.githubusercontent.com/54604091/110505518-13864500-80b3-11eb-854b-9e3c48f51037.png)
 
+- To represent the many-to-many relationships between users in the database we are using a node-edge-graph that is commonly used to illustrate friendships on social media.
+- All done through pure javascript with html canvas to draw shapes
+- Javascript asynchronus mapping to fetch data concurrently
+- Used [cytoscape.js](https://js.cytoscape.org/) to render nodes
 
-
+[Implementation](https://github.com/nathanielCherian/spring-game/blob/master/src/main/resources/templates/map.html#L158-L247)
 
 ## Highlighted Features
 - **Dark Mode with Cookies**: for dark mode we are using cookies to store the user's theme preference
